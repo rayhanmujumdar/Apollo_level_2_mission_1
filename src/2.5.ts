@@ -27,10 +27,12 @@
   };
   type Student1 = {
     name: string;
+    email: string,
     skills: string[];
   };
   const student1 = addCourseToStudent<Student1>({
     name: "Rayhan",
+    email: 'rayhan@gmail.com',
     skills: ["javascript", "React", "node"],
   });
 
