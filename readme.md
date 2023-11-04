@@ -155,4 +155,64 @@
 
 ## Reference:
 
-[Typescript type alias vs interface docs](https://www.geeksforgeeks.org/what-is-the-difference-between-interface-and-type-in-typescript/)
+[Typescript type alias vs interface docs](https://www.geeksforgeeks.org/what-is-the-difference-between-interface-and-type-in-typescript/)****
+
+
+# 2.3 **Introduction to generics**
+
+**********************Date: 4/11/23**********************
+
+1. Generics offer a way to create reusable components. Generics provide a way to make components work with any data type and not restrict to one data type. So, components can be called or used with a variety of data types. Generics in TypeScript is almost similar to C# generics.
+2. the type variable `T` is specified with the function in the angle brackets `getArray<T>`.The type variable `T` is also used to specify the type of the arguments and the return value.This means that the data type which will be specified at the time of a function call, will also be the data type of the arguments and of the return value.
+    
+    ```tsx
+     //example with function
+        function getArray<T>(items: T[]): T[]{
+            return new Array<T>().concat(items)
+        }
+        getArray<string>(['Rayhan',"iqbal"])
+    ```
+    
+3. Generics with type alias code example:
+    
+    ```tsx
+    {
+        // generics type
+    
+      
+        // example with array
+        type GenericArray<T> = T[]
+        const serialNo:GenericArray<number> = [1,3,4,5,6]
+        const friends:GenericArray<string> = ['Rayhan','IQbal','faisal','Miraz']
+        const isMyFriends: GenericArray<boolean> = [true,false,false,true]
+    
+        // example with tuples
+        type genericsTuples<X,Y> = [X,Y]
+        const couple : genericsTuples <string,string> = ['Mr. Rayhan', "Mr. Rima"]
+        const userWithId: genericsTuples<number,{name: string,age: number}> = [1234,{name: 'Rayhan',age: 25}]
+    
+        // example with object
+        type TPerson<ID,SKILLS> = {
+            id: ID
+            name: string,
+            age: number,
+            contact: string
+            skills: SKILLS
+        }
+    
+        const person: TPerson<number,string[]> = {
+            id: 1234,
+            name: 'Rahat',
+            age: 25,
+            contact: '01776464695',
+            skills: ['html','css', 'javascript']
+        }
+    
+    }
+    ```
+    
+
+## Reference:
+
+1. Typescript Generics documentation:
+[TypeScript Generics](https://www.tutorialsteacher.com/typescript/typescript-generic)
