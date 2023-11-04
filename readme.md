@@ -330,3 +330,65 @@ const richDeveloper: Developer<AppleWatch, YamahaBike> = {
 };
 console.log(richDeveloper);
 ```
+
+
+# 2.5 Function with Generics
+
+**Date : 4/11/23**
+
+1. Function with generics code example:
+    
+    ```tsx
+    {
+      // Function with generics
+      const createWithGeneric = <T>(param: T): T[] => {
+        return [param];
+      };
+    
+      createWithGeneric<string>("Bangladesh");
+      createWithGeneric<number>(255);
+    
+      // generic with Tuples
+      const createWithTuple = <T, Y>(param1: T, param2: Y): [T, Y] => {
+        return [param1, param2];
+      };
+      createWithTuple<string, number>("Bangladesh", 244);
+      createWithTuple<{ tips: string }, boolean>(
+        { tips: "always be honest" },
+        true
+      );
+    
+      //
+      const addCourseToStudent = <T>(student: T): T & { course: string } => {
+        const course = "Next level web development";
+        return {
+          ...student,
+          course,
+        };
+      };
+    // student1 create a dynamic type
+      type Student1 = {
+        name: string;
+        skills: string[];
+      };
+      const student1 = addCourseToStudent<Student1>({
+        name: "Rayhan",
+        skills: ["javascript", "React", "node"],
+      });
+    // student2 create a dynamic type
+      type Student2 = {
+        name: string;
+        email: string;
+      };
+      const student2 = addCourseToStudent<Student2>({
+        name: "sabbir",
+        email: "rayhan@gmail.com",
+      });
+      //
+    }
+    ```
+    
+    ## Reference:
+    
+    1. **Generic Functions in TypeScript**
+     [Generic Functions in TypeScript - Scaler Topics](https://www.scaler.com/topics/typescript/generic-functions-in-typescript/)
