@@ -776,7 +776,7 @@ console.log(richDeveloper);
     ```
     
 2. **Omit<Type, Keys>** Utility
-    1. Constructs a type by picking all properties from `Type` and then removing `Keys` (string literal or union of string literals). The opposite of `[Pick](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)`.
+    1. Constructs a type by picking all properties from `Type` and then removing `Keys` (string literal or union of string literals). The opposite of [Pick](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys).
     
     ```tsx
     // omit Utility
