@@ -752,3 +752,111 @@ console.log(richDeveloper);
 
 1. Mapped types docs:
 [Documentation - Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
+
+# 2.11 Utility types (Pick, Omit, require, partial, readonly, **Record**)
+
+1. **Pick<Type, Keys>** utility
+    1. Constructs a type by picking the set of properties `Keys` (string literal or union of string literals) from `Type`.
+    
+    ```tsx
+    // pick Utility
+        type Person = {
+            name: string,
+            age: number,
+            email?: string,
+            contactNo: string
+        }
+        type PickPerson = Pick<Person,"name" | "email">
+        /* now PickPerson type structure
+            type PickPerson = {
+                name: string;
+                email?: string | undefined;
+            }
+        */
+    ```
+    
+2. **Omit<Type, Keys>** Utility
+    1. Constructs a type by picking all properties from `Type` and then removing `Keys` (string literal or union of string literals). The opposite of `[Pick](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)`.
+    
+    ```tsx
+    // omit Utility
+        type OmitPersonProperty = Omit<Person,"contactNo">
+        /* now OmitPersonProperty type structure
+            type OmitPersonProperty = {
+                name: string;
+                email?: string | undefined;
+                age: string;
+            }
+        */
+    ```
+    
+3. **Partial<Type>** Utility
+    1. Constructs a type with all properties of `Type` set to optional. This utility will return a type that represents all subsets of a given type.
+    
+    ```tsx
+    // partial/optional Utility
+        type PersonPartial = Partial<Person>
+        /* PersonPartial type output
+            type PersonPartial = {
+                name?: string | undefined;
+                age?: string | undefined;
+                email?: string | undefined;
+                contactNo?: string | undefined;
+            }
+        */
+    ```
+    
+4. **Required<Type>** Utility
+    1. Constructs a type consisting of all properties of `Type` set to required. The opposite of `[Partial](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)`.
+    
+    ```tsx
+    // required Utility
+       type PersonRequired = Required<Person>
+       /* PersonRequired Type output
+            type PersonRequired = {
+                name: string;
+                age: string;
+                email: string;
+                contactNo: string;
+            }
+       */
+    ```
+    
+5. **ReadOnly<Type>** Utility
+    1. Constructs a type with all properties of `Type` set to `readonly`, meaning the properties of the constructed type cannot be reassigned.
+    
+    ```tsx
+    //Readonly Utility
+        type PersonLocked = Readonly<Person>
+    
+        const person1:PersonLocked = {
+            name: 'rayhan',
+            age: 24,
+            contactNo: '01774154545'
+        }
+        // error: Cannot assign to 'name' because it is a read-only property.
+        // person1.name = 'sabbir'
+    ```
+    
+6. **Record<Keys, Type> Utility**
+    1. Constructs an object type whose property keys are `Keys` and whose property values are `Type`. This utility can be used to map the properties of a type to another type.
+    
+    ```tsx
+    // Record Utility
+        
+        type MyObj = Record<string,string>
+        const obj1:MyObj = {
+            a: 'aa',
+            b: 'bb',
+            c: 'cc',
+            // d: 11 error: Type 'number' is not assignable to type 'string'.
+        }
+        
+        const emptyObj: Record<string,unknown> = {}
+        emptyObj.id = 123
+        emptyObj.userId = '234'
+    ```
+    
+    ## Reference:
+    1. Typescript important Utility types  docs:
+    [Documentation - Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
