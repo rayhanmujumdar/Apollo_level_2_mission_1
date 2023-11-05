@@ -618,3 +618,44 @@ console.log(richDeveloper);
 
 1. Typescript async await docs:
     [Documentation - TypeScript 1.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-7.html)
+
+
+    # 2.9 Conditional Types
+
+**Date : 5/11/23**
+
+1. এমন কোনো টাইপ যদি অন্য কোনো টাইপের উপর নির্বর করে কোনো একটা কন্ডিশনের উপর ভিত্তি করে  সেটাই হচ্ছে conditional types.
+2. conditional Types code example:
+    
+    ```tsx
+    {
+        // conditional typescript
+        type a1 = null
+        type b1 = undefined
+    
+        // javascript conditional expressions syntax
+        type c1 = a1 extends string ? true : false
+        type d1 = a1 extends number ? b1 extends string ? string : number : null // nested check condition
+    
+        type RichMan  = {
+            bike: string,
+            car: string,
+            ship: string,
+            plane: string
+        }
+    
+        // keyof RichMan "bike" | "car" | "ship"
+        // car ase kina / bike ace kina / ship ace kina / plane ace kina
+        type CheckVehicle<T> = T extends keyof RichMan ? true : false
+    
+        type HasPlane = CheckVehicle<"track"> // HasPlan = false
+    
+        //
+    }
+    ```
+    
+
+## Reference:
+
+1. Conditional types docs
+  [Documentation - Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
