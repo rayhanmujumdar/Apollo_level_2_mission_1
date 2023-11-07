@@ -446,3 +446,54 @@
 ## Reference:
 
 1. Typescript Getter and Setter code example:[How to use getters/setters in TypeScript ? - GeeksforGeeks](https://www.geeksforgeeks.org/how-to-use-getters-setters-in-typescript/)
+
+# 3.7 - Static in OOP
+
+**Date : 7/11/23**
+
+1. ES6 includes static members and so does TypeScript. The static members of a class are accessed using the class name and dot notation, without creating an object e.g. <ClassName>.<StaticMember>.
+2. The static members can be defined by using the keyword *static*. Consider the following example of a class with static property.
+3. Static in OOP practice:
+    
+    ```tsx
+    {
+        // Static in OOP
+        class Counter {
+            static count : number = 0
+            static increment(value:number = 1) {
+                Counter.count += value
+            }
+            static decrement(value: number = 1){
+                Counter.count -= value
+                if(Counter.count < 0) {
+                    Counter.count = 0
+                    throw new Error(`Count value less then ${Counter.count}. no more decrement`)
+                }
+            }
+        } 
+    
+        // store different memory size
+        // const count1 = new Counter()
+        // count1.increment(6)
+        // console.log(count1.count);
+    
+        // store different memory size
+        // const count2 = new Counter()
+        // count2.increment(10)
+        // console.log(count2.count);
+    
+        // create static Counter
+        Counter.increment(5) // count = 5
+        Counter.increment(10) // count = 15
+        Counter.decrement(4) // count = 11
+        Counter.decrement(11) // count = 11
+        console.log(Counter.count); // there are count value access static.no calling Counter class
+        //
+    }
+    ```
+    
+    ## Reference:
+    
+    1. Typescript Static docs:
+        
+        [TypeScript Static](https://www.tutorialsteacher.com/typescript/typescript-static)

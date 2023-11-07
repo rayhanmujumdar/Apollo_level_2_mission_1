@@ -71,6 +71,5 @@
  myDepartment.deposit = 50
  myDepartment.addTeacher = teacher3
   console.log(myDepartment);
-
   //
 }
